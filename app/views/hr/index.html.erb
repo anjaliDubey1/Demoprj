@@ -1,0 +1,21 @@
+<h1>Hr#index</h1>
+<p>Find me in app/views/hr/index.html.erb</p>
+<table>
+    <tr>
+        <th>name</th>
+        <th>phone_no</th>
+        <th>age</th>
+        <th>address</th>
+    </tr>
+    <% @hr.each do |hr| %>
+    <tr>
+        <td><%=hr.name %></td>
+        <td><%=hr.phone_no %></td>
+        <td><%=hr.age %></td>
+        <td><%=hr.address %></td>
+        <td><%=link_to "Edit",edit_hr_path(hr.id) %></td>
+        <td><%=link_to "Delete",hr_path(hr.id), method: :delete%></td>
+    </tr>
+    <% end %>
+</table><br>
+<%= link_to "Add hr",new_hr_path %>
