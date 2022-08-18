@@ -1,4 +1,4 @@
-<h1>Employee#index</h1>
+<h1>Employee</h1>
 <table>
     <tr>
         <th>name</th>
@@ -12,9 +12,12 @@
         <td><%=employee.phone_no %></td>
         <td><%=employee.age %></td>
         <td><%=employee.address %></td>
+        <td><%=link_to "Profile",employee_path(employee.id) %></td>
         <td><%=link_to "Edit",edit_employee_path(employee.id) %></td>
         <td><%=link_to "Delete",employee_path(employee.id), method: :delete%></td>
     </tr>
     <% end %>
 </table><br>
-<%= link_to "Add Employee",new_employee_path %>
+<%= link_to "Add Employee",new_employee_path %><br>
+<%= link_to "Admin Dashboard",admins_path %><br>
+<%= link_to "hr",hr_index_path %>

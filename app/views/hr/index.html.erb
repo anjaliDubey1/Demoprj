@@ -1,5 +1,4 @@
-<h1>Hr#index</h1>
-<p>Find me in app/views/hr/index.html.erb</p>
+<h1>Hr</h1>
 <table>
     <tr>
         <th>name</th>
@@ -13,9 +12,12 @@
         <td><%=hr.phone_no %></td>
         <td><%=hr.age %></td>
         <td><%=hr.address %></td>
+        <td><%=link_to "Profile",hr_path(hr.id) %></td>
         <td><%=link_to "Edit",edit_hr_path(hr.id) %></td>
         <td><%=link_to "Delete",hr_path(hr.id), method: :delete%></td>
     </tr>
     <% end %>
 </table><br>
-<%= link_to "Add hr",new_hr_path %>
+<%= link_to "Add hr",new_hr_path %><br>
+<%= link_to "Admin Dashboard",admins_path %><br>
+<%= link_to "Employee Dashboard",employees_path %>

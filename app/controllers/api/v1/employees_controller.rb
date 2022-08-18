@@ -1,15 +1,15 @@
 class Api::V1::EmployeesController < Api::V1::ApiController
     skip_before_action :verify_authenticity_token
+    before_action :set_employee, only: [:show, :update, :destroy]
     def index
       @employees = Employee.all
     end
     def show
-      @employee =Employee.find(params[:id])
+     
     end
     def create
         @admin =Admin.first
         @employee = @admin.Employees.new(employee_params)
-
         if @employee.save
             render json: {status:"Success",message:"successfully saved",data:@employee},status: :ok
         else
@@ -17,7 +17,6 @@ class Api::V1::EmployeesController < Api::V1::ApiController
         end   
     end
     def update
-        @employee = Employee.find(params[:id])
         if @employee.update(employee_params)
             render json: {status:"Success",message:" updated successfully ",data:@employee},status: :ok
         else
@@ -25,13 +24,14 @@ class Api::V1::EmployeesController < Api::V1::ApiController
         end
     end
     def destroy
-        @employee =Employee.find(params[:id]) 
         if @employee.destroy
             redirect_to api_v1_employees_path
         end
     end
-
     private
+    def set_employee
+        @employee = Employee.find(params[:id])
+    end
     def employee_params
         params.permit(:name,:phone_no,:age,:address)
     end

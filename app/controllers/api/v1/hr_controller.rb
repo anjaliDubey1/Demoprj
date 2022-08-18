@@ -1,10 +1,11 @@
 class Api::V1::HrController < Api::V1::ApiController
     skip_before_action :verify_authenticity_token
+    before_action :set_hr, only: [:show, :update, :destroy]
     def index
       @hrs = Hr.all
     end
     def show
-      @hr =Hr.find(params[:id])
+      
     end
     def create
         @admin =Admin.first
@@ -16,7 +17,6 @@ class Api::V1::HrController < Api::V1::ApiController
         end   
     end
     def update
-        @hr = Hr.find(params[:id])
         if @hr.update(hr_params)
             render json: {status:"Success",message:" updated successfully ",data:@hr},status: :ok
         else
@@ -24,14 +24,14 @@ class Api::V1::HrController < Api::V1::ApiController
         end
     end
     def destroy
-        @hr =Hr.find(params[:id]) 
         if @hr.destroy
             redirect_to api_v1_hr_index_path
         end
-      
     end
-
     private
+    def set_hr
+        @hr = Hr.find(params[:id])
+    end
     def hr_params
         params.permit(:name,:phone_no,:age,:address)
     end
