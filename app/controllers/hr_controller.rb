@@ -14,7 +14,6 @@ class HrController < ApplicationController
    def create
      @admin =Admin.first
      @hr = @admin.hrs.new(hr_params)
-
      if @hr.save
        redirect_to hr_index_path
      else

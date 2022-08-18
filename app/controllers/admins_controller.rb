@@ -12,7 +12,6 @@ class AdminsController < ApplicationController
   end
 
   def create
-    byebug
    @admin = Admin.new(admin_params)
    if @admin.save
      redirect_to admins_path
