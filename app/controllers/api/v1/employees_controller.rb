@@ -18,7 +18,7 @@ class Api::V1::EmployeesController < Api::V1::ApiController
     end
     def update
         if @employee.update(employee_params)
-            render json: {status:"Success",message:" updated successfully ",data:@employee},status: :ok
+            render :update
         else
             render json: {status:"error",message:"not update",data:@employee.errors}
         end
@@ -33,6 +33,6 @@ class Api::V1::EmployeesController < Api::V1::ApiController
         @employee = Employee.find(params[:id])
     end
     def employee_params
-        params.permit(:name,:phone_no,:age,:address)
+        params.permit(:name,:email,:phone_no,:age,:address)
     end
 end

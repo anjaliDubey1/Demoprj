@@ -1,17 +1,17 @@
-<h1>Employee</h1>
+<h1>Employee dashbord</h1>
 <table>
     <tr>
         <th>name</th>
-        <th>phone_no</th>
+        <!-- <th>phone_no</th>
         <th>age</th>
-        <th>address</th>
+        <th>address</th> -->
     </tr>
     <% @employee.each do |employee| %>
     <tr>
         <td><%=employee.name %></td>
-        <td><%=employee.phone_no %></td>
-        <td><%=employee.age %></td>
-        <td><%=employee.address %></td>
+        <!-- <td><%#=employee.phone_no %></td>
+        <td><%#=employee.age %></td>
+        <td><%#=employee.address %></td> -->
         <td><%=link_to "Profile",employee_path(employee.id) %></td>
         <td><%=link_to "Edit",edit_employee_path(employee.id) %></td>
         <td><%=link_to "Delete",employee_path(employee.id), method: :delete%></td>
@@ -20,4 +20,4 @@
 </table><br>
 <%= link_to "Add Employee",new_employee_path %><br>
 <%= link_to "Admin Dashboard",admins_path %><br>
-<%= link_to "hr",hr_index_path %>
+<%= link_to "hr",hr_index_path %><br>

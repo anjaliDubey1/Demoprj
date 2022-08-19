@@ -33,6 +33,6 @@ class Api::V1::HrController < Api::V1::ApiController
         @hr = Hr.find(params[:id])
     end
     def hr_params
-        params.permit(:name,:phone_no,:age,:address)
+        params.permit(:name,:email,:phone_no,:age,:address)
     end
 end

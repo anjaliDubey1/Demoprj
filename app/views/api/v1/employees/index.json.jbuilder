@@ -1,3 +1,3 @@
 json.employees @employees do |employee|
-    json.(employee,:id,:name,:phone_no,:age,:address)
+    json.(employee,:id,:name,:email,:phone_no,:age,:address)
 end

@@ -32,6 +32,6 @@ class Api::V1::AdminsController < Api::V1::ApiController
         @admin = Admin.find(params[:id])
     end
     def admin_params
-        params.permit(:name,:phone_no,:age,:address)
+        params.permit(:name,:email,:phone_no,:age,:address)
     end
 end

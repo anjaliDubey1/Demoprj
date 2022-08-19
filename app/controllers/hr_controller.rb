@@ -37,6 +37,6 @@ class HrController < ApplicationController
     @hr = Hr.find(params[:id])
   end
   def hr_params
-    params.require(:hr).permit(:name,:phone_no,:age,:address)
+    params.require(:hr).permit(:name,:email,:phone_no,:age,:address)
   end
  end
