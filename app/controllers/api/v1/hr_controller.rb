@@ -11,14 +11,14 @@ class Api::V1::HrController < Api::V1::ApiController
         @admin =Admin.first
         @hr = @admin.hrs.new(hr_params)
         if @hr.save
-            render json: {status:"Success",message:"successfully saved",data:@hr},status: :ok
+            render :create
         else
             render json: {status:"error",message:"not saved",data:@hr.errors}
         end   
     end
     def update
         if @hr.update(hr_params)
-            render json: {status:"Success",message:" updated successfully ",data:@hr},status: :ok
+            render :update
         else
             render json: {status:"error",message:"not update",data:@hr.errors}
         end

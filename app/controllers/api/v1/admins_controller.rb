@@ -10,14 +10,14 @@ class Api::V1::AdminsController < Api::V1::ApiController
     def create
         @admin = Admin.new(admin_params)
         if @admin.save
-            render json: {status:"Success",message:"successfully saved",data:@admin},status: :ok
+            render :create
         else
             render json: {status:"error",message:"not saved",data:@admin.errors}
         end   
     end
     def update
         if @admin.update(admin_params)
-            render json: {status:"Success",message:" updated successfully ",data:@admin},status: :ok
+            render :update
         else
             render json: {status:"error",message:"not update",data:@admin.errors}
         end

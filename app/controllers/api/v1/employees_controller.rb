@@ -11,7 +11,7 @@ class Api::V1::EmployeesController < Api::V1::ApiController
         @admin =Admin.first
         @employee = @admin.Employees.new(employee_params)
         if @employee.save
-            render json: {status:"Success",message:"successfully saved",data:@employee},status: :ok
+            render :create
         else
             render json: {status:"error",message:"not saved",data:@employee.errors}
         end   
